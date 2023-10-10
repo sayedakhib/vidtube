@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+        * {
+            list-style: none;
+            text-decoration: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        body {
+            background: #333;
+        }
+
+
+        .wrapper .sidebar {
+            background: #000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 225px;
+            height: 140vh;
+            padding: 20px 0;
+            transition: all 0.5s ease;
+        }
+
+        .wrapper .sidebar .profile {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .wrapper .sidebar .profile img {
+            display: block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+
+        .wrapper .sidebar .profile h3 {
+            color: #ffffff;
+            margin: 10px 0 5px;
+        }
+
+        .wrapper .sidebar .profile p {
+            color: rgb(206, 240, 253);
+            font-size: 14px;
+        }
+
+        .wrapper .sidebar ul li a {
+            display: block;
+            padding: 13px 30px;
+            border-bottom: 1px solid #000;
+            color: rgb(241, 237, 237);
+            font-size: 16px;
+            position: relative;
+        }
+
+        .wrapper .sidebar ul li a .icon {
+            color: #dee4ec;
+            width: 30px;
+            display: inline-block;
+        }
+
+
+
+        .wrapper .sidebar ul li a:hover,
+        .wrapper .sidebar ul li a.active {
+            color: #0c7db1;
+
+            background: white;
+            border-right: 2px solid rgb(5, 68, 104);
+        }
+
+        .wrapper .sidebar ul li a:hover .icon,
+        .wrapper .sidebar ul li a.active .icon {
+            color: #0c7db1;
+        }
+
+        .wrapper .sidebar ul li a:hover:before,
+        .wrapper .sidebar ul li a.active:before {
+            display: block;
+        }
+
+        .wrapper .section {
+            width: calc(100% - 225px);
+            margin-left: 225px;
+            transition: all 0.5s ease;
+        }
+
+        .wrapper .section .top_navbar {
+            background: #000;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* Add this line */
+            padding: 0 30px;
+
+        }
+
+        .wrapper .section .top_navbar .hamburger a {
+            font-size: 28px;
+            color: #f4fbff;
+        }
+
+        .wrapper .section .top_navbar .hamburger a:hover {
+            color: #a2ecff;
+        }
+
+        h1 {
+            color: red;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        .logo {
+            margin-right: 400px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .inline {
+            font-size: x-large;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .search {
+            display: flex;
+            float: left;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 400px;
+            margin-left: 70px;
+            flex: 1;
+        }
+
+        .search .srch {
+            border-radius: 5px;
+            width: 400px;
+            height: 25px;
+        }
+
+        .btn {
+            border-radius: 5px;
+            height: 25px;
+            background-color: red;
+            color: white;
+            width: 50px;
+        }
+
+        .wrapper .section .container {
+            margin: 30px;
+            background: #fff;
+            padding: 50px;
+            line-height: 28px;
+        }
+
+        body.active .wrapper .sidebar {
+            left: -225px;
+        }
+
+        body.active .wrapper .section {
+            margin-left: 0;
+            width: 100%;
+        }
+
+        .container1 {
+            overflow: hidden;
+            padding: 20px 2% 20px;
+        }
+
+        .large_container {
+            padding-left: 7%;
+        }
+
+        .banner {
+            width: 100%;
+        }
+
+        .banner img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .list_container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-column-gap: 16px;
+            grid-row-gap: 20px;
+            margin-top: 15px;
+        }
+
+        .vid_list {
+            background-color: #e6e7eb;
+        }
+
+        .vid_list .thumbnail {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .com {
+            height: 200px;
+        }
+
+        .vid_list .flex_div {
+            align-items: flex-start;
+            margin-top: 7px;
+        }
+
+        .vid_list .flex_div img {
+            width: 35px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .vid_list .flex_div .vid_info {
+            color: #1b1b1b;
+            font-size: 13px;
+        }
+
+        .vid_list .flex_div .vid_info a {
+            color: #000;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .b{
+            background-color: #eb0505;
+            color: white;
+            border-radius: 10px;
+            height: 30px;
+            width: 150px;
+            cursor: pointer;
+        }
+        @media screen and (max-width: 768px) {
+
+            .top_navbar {
+                padding: 0 10px;
+            }
+
+            .search {
+                max-width: 100%;
+            }
+
+            .search .srch {
+                width: 100%;
+            }
+
+            .btn {
+                width: 30%;
+            }
+
+            .wrapper .section .top_navbar .logo {
+                margin-right: 10px;
+                /* Adjust the margin for logo */
+            }
+
+            .wrapper .section .top_navbar .search {
+                max-width: none;
+                margin: 0;
+                flex: 1;
+            }
+
+            .wrapper .section .top_navbar .search .srch {
+                width: 100%;
+            }
+
+            .wrapper .section .top_navbar .search .btn {
+                width: auto;
+            }
+
+            .list_container {
+                grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+                grid-column-gap: 10px;
+                grid-row-gap: 20px;
+            }
+
+            .vid_list .thumbnail {
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="section">
+            <div class="top_navbar">
+                <div class="hamburger">
+                    <a href="#">
+                        <i class="fas fa-bars"></i>
+                    </a>
+
+                </div>
+                <div class="logo">
+                    <h1 class="inline">VID</h1>
+                    <h2 class="inline">stream</h2>
+                </div>
+                <div class="search">
+                    <input class="srch" type="search" placeholder="Search" name="search" id="search">
+                    <button class="btn" onclick="searchVideos()"><i class="fa-solid fa-magnifying-glass"
+                            style="color: #ffffff;"></i></button>
+                </div>
+            </div>
+
+            <div class="container1 ">
+
+                <div class="banner">
+                    <img src="images/banner.png" alt="">
+                </div>
+                <div class="list_container">
+                    <div class="vid_list 1" id=vid1>
+                        <a href="cwc.html"><img src="cwc.jpg" class="thumbnail com"></a>
+                        <div class="flex_div">
+                            <div class="vid_info">
+                                <span> <img src="https://yt3.ggpht.com/3K6h6gpMPf4mK9qh6SXTl0W3PLxnOMzUnFHc2lbS9t-ucS-b4JGcR8nW7ja9XDYkHM-kAnijk2c=s68-c-k-c0x00ffffff-no-rj" alt=""></span>
+                                <span style="font-size: larger;">ICC</span>
+                                <a href="#">CWC23 is here</a>
+                                <p>Tickets on sale.</p>
+                                <p> <a href="https://tickets.cricketworldcup.com/explore/c/icc-cricket-world-cup">BUY
+                                        NOW!</a> </p>
+                                <p>15k views &bull; 3days</p>
+                            </div>
+                            <center><button class="list b" onclick="copyDivToPlaylist(this)">Add To Playlist</button></center>
+                        </div>
+
+                    </div>
+                    <div class="vid_list 2 " id="vid2">
+                        <a href="comedy.html"><img src="comedy.jpg" class="thumbnail com"></a>
+                        <div class="flex_div">
+                            <div class="vid_info">
+                                <span> <img
+                                        src="https://yt3.googleusercontent.com/ytc/APkrFKakurXlHTR5PfaX3xb_JFs1IueLPtkkwNE4S3W0WJ8=s176-c-k-c0x00ffffff-no-rj"
+                                        alt="m"></span>
+                                <span style="font-size: larger;">Munawar Faruqui</span>
+                                <h3>Kashif ki Dosti | Standup comedy by Munawar Faruqui | 2023</h3>
+                                <p>Written & Performed by : Munawar Faruqui</p>
+                                <p>5,133,593 views &bull; Sep 27, 2023 </p>
+                            </div>
+                            <center><button class="list1 b" id="comedy" onclick="copyDivToPlaylist1(this)">Add To Playlist</button></center>
+                        </div>
+                    </div>
+                    <div class="vid_list 3" id="vid3">
+                        <a href="leo.html"><img src="leo.jpg" class="thumbnail com"></a>
+                        <div class="flex_div">
+                            <div class="vid_info">
+                                <span> <img
+                                        src="https://yt3.ggpht.com/wblvtoHFXpBoat-oNukycB5auBa45inSwiyghE8gac3MN_ridYgeY1kHRKCkBrb1slgpIlO6Vw=s48-c-k-c0x00ffffff-no-rj"
+                                        alt="m"></span>
+                                <span style="font-size: larger;">Goldmines</span>
+                                <h3>#LEO (Hindi) Official Trailer | Thalapathy Vijay | Sanjay Dutt | Lokesh Kanagaraj |
+                                    Anirudh</h3>
+                                <p>Leo In Theatres from October 19th 2023</p>
+                                <p>11,619,872 views &bull; Oct 5, 2023 </p>
+                            </div>
+                           <center><button class="list2 b" onclick="copyDivToPlaylist2(this)">Add To Playlist</button></center> 
+                        </div>
+                    </div>
+                    <div class="vid_list 4" id="vid4">
+                        <a href="sos.html"><img src="sos.jpg" class="thumbnail com"></a>
+                        <div class="flex_div">
+                            <div class="vid_info">
+                                <span> <img
+                                        src="https://yt3.ggpht.com/ytc/APkrFKaeOBRJocyZl4n4b7tzOgYTJrrzq--fbVberimekQ=s48-c-k-c0x00ffffff-no-rj"
+                                        alt="m"></span>
+                                <span style="font-size: larger;">National Geographic India</span>
+                                <h3>Science Lessons with a Twist of Comedy | Science of Stupid | National Geographic
+                                </h3>
+                                <p>Pay attention to these science lessons to avoid looking stupid in public!</p>
+                                <p>997,341 views &bull; Apr 10, 2021 </p>
+                            </div>
+                            <center><button class="list3 b" id="comedy" onclick="copyDivToPlaylist3(this)">Add To Playlist</button></center>
+                        </div>
+                    </div>
+                    <div class="vid_list 5" id="vid5">
+                        <a href="harry.html"><img src="harry.jpg" class="thumbnail com"></a>
+                        <div class="flex_div">
+                            <div class="vid_info">
+                                <span> <img
+                                        src="https://yt3.ggpht.com/ytc/APkrFKZGyiFJtoR2Isio_S591bOWpCKBFaIzqSuAG56ubA=s48-c-k-c0x00ffffff-no-rj"
+                                        alt="m"></span>
+                                <span style="font-size: larger;">CodeWithHarry</span>
+                                <h3>Introduction to HTML, CSS, JavaScript & How websites work? </h3>
+                                <p>Web Development Tutorials For Beginners In Hindi: HTML, CSS, JavaScript & More</p>
+                                <p>6,668,142 views &bull; Dec 25, 2019 </p>
+                            </div>
+                            <center><button class="list4 b" id="comedy" onclick="copyDivToPlaylist4(this)">Add To Playlist</button></center>
+                        </div>
+                    </div>
+                    <div class="vid_list 6" id="vid6">
+                        <a href="fukra.html"><img src="fukra.jpg" class="thumbnail com"></a>
+                        <div class="flex_div">
+                            <div class="vid_info">
+                                <span> <img
+                                        src="https://yt3.ggpht.com/ytc/APkrFKYeFnUtv-ksRp93E-jZpv2taj6h3bikx4H6BVi83Q=s48-c-k-c0x00ffffff-no-rj"
+                                        alt="m"></span>
+                                <span style="font-size: larger;">Fukra Insaan</span>
+                                <h3>Living in a 700 CRORE PLANE for 24 Hours !!</h3><br>
+                                <p>I lived in a 700 crore plane for one day </p><br>
+                                <p>4,339,987 views &bull; Sep 15, 2022</p>
+                            </div>
+                           <center><button class="list5 b"  onclick="copyDivToPlaylist5(this)">Add To Playlist</button></center> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="#" >
+                        <span class="icon"><i class="fa-solid fa-house fa-lg" style="color: #eb0505;"></i></span>
+                        <span class="item">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa-solid fa-fire fa-lg" style="color: #ed0c0c;"></i></span>
+                        <span class="item">Trending</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa-solid fa-video fa-lg" style="color: #f70227;"></i></span>
+                        <span class="item">Streaming</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="playlist.html">
+                        <span class="icon"><i class="fa-solid fa-play fa-lg" style="color: #ed0707;"></i></span>
+                        <span class="item">Playlist</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <script src="https://kit.fontawesome.com/74289d101a.js" crossorigin="anonymous"></script>
+    <script>
+        var hamburger = document.querySelector(".hamburger");
+        hamburger.addEventListener("click", function () {
+            document.querySelector("body").classList.toggle("active");
+        })
+        
+        //search videos
+        function searchVideos() {
+            const searchInput = document.getElementById("search").value.toLowerCase();
+            const video1 = document.getElementById("vid1");
+            const video2 = document.getElementById("vid2");
+            const video3 = document.getElementById("vid3");
+            const video4 = document.getElementById("vid4");
+            const video5 = document.getElementById("vid5");
+            const video6 = document.getElementById("vid6");
+
+            const title1 = "ICC".toLowerCase();
+            const title2 = "comedy".toLowerCase();
+            const title3 = "LEO Trailer".toLowerCase();
+            const title4 = "Science of Stupid ".toLowerCase();
+            const title5 = "HTML".toLowerCase();
+            const title6 = "Living".toLowerCase();
+
+            if (title1.includes(searchInput)) {
+                video1.style.display = "block";
+            } else {
+                video1.style.display = "none";
+            }
+
+            if (title2.includes(searchInput)) {
+                video2.style.display = "block";
+            } else {
+                video2.style.display = "none";
+            }
+            if (title3.includes(searchInput)) {
+                video3.style.display = "block";
+            } else {
+                video3.style.display = "none";
+            }
+            if (title4.includes(searchInput)) {
+                video4.style.display = "block";
+            } else {
+                video4.style.display = "none";
+            }
+            if (title5.includes(searchInput)) {
+                video5.style.display = "block";
+            } else {
+                video5.style.display = "none";
+            }
+            if (title6.includes(searchInput)) {
+                video6.style.display = "block";
+            } else {
+                video6.style.display = "none";
+            }
+        }
+        //search videos
+        //to add the videos to the play list
+        function copyDivToPlaylist(button) {
+            // Find the parent div with class 'vid_list' containing the content
+            const parentDiv = button.parentElement.parentElement.parentElement;
+
+            // Clone the parent div and remove the button from the cloned content
+            const clonedDiv = parentDiv.cloneNode(true);
+            const buttonToRemove = clonedDiv.querySelector('.list');
+            if (buttonToRemove) {
+                buttonToRemove.remove();
+            }
+
+            // Serialize the cloned div to a string
+            const serializedContent = new XMLSerializer().serializeToString(clonedDiv);
+
+            // Save the serialized content to local storage
+            localStorage.setItem('playlistContent', serializedContent);
+
+            // Redirect to the 'playlist.html' page
+            window.location.href = 'playlist.html';
+        }
+
+        function copyDivToPlaylist1(button1) {
+            // Find the parent div with class 'vid_list' containing the content
+            const parentDiv1 = button1.parentElement.parentElement.parentElement;
+
+            // Clone the parent div and remove the button from the cloned content
+            const clonedDiv1= parentDiv1.cloneNode(true);
+            const buttonToRemove1 = clonedDiv1.querySelector('.list1');
+            if (buttonToRemove1) {
+                buttonToRemove1.remove();
+            }
+
+            // Serialize the cloned div to a string
+            const serializedContent1 = new XMLSerializer().serializeToString(clonedDiv1);
+
+            // Save the serialized content to local storage
+            localStorage.setItem('playlistContent1', serializedContent1);
+
+            // Redirect to the 'playlist.html' page
+            window.location.href = 'playlist.html';
+        }
+        function copyDivToPlaylist2(button2) {
+            // Find the parent div with class 'vid_list' containing the content
+            const parentDiv2 = button2.parentElement.parentElement.parentElement;
+
+            // Clone the parent div and remove the button from the cloned content
+            const clonedDiv2= parentDiv2.cloneNode(true);
+            const buttonToRemove2 = clonedDiv2.querySelector('.list2');
+            if (buttonToRemove2) {
+                buttonToRemove2.remove();
+            }
+
+            // Serialize the cloned div to a string
+            const serializedContent2 = new XMLSerializer().serializeToString(clonedDiv2);
+
+            // Save the serialized content to local storage
+            localStorage.setItem('playlistContent2', serializedContent2);
+
+            // Redirect to the 'playlist.html' page
+            window.location.href = 'playlist.html';
+        }
+        function copyDivToPlaylist3(button3) {
+            // Find the parent div with class 'vid_list' containing the content
+            const parentDiv3 = button3.parentElement.parentElement.parentElement;
+
+            // Clone the parent div and remove the button from the cloned content
+            const clonedDiv3= parentDiv3.cloneNode(true);
+            const buttonToRemove3 = clonedDiv3.querySelector('.list3');
+            if (buttonToRemove3) {
+                buttonToRemove3.remove();
+            }
+
+            // Serialize the cloned div to a string
+            const serializedContent3 = new XMLSerializer().serializeToString(clonedDiv3);
+
+            // Save the serialized content to local storage
+            localStorage.setItem('playlistContent3', serializedContent3);
+
+            // Redirect to the 'playlist.html' page
+            window.location.href = 'playlist.html';
+        }
+        function copyDivToPlaylist4(button4) {
+            // Find the parent div with class 'vid_list' containing the content
+            const parentDiv4 = button4.parentElement.parentElement.parentElement;
+
+            // Clone the parent div and remove the button from the cloned content
+            const clonedDiv4= parentDiv4.cloneNode(true);
+            const buttonToRemove4 = clonedDiv4.querySelector('.list4');
+            if (buttonToRemove4) {
+                buttonToRemove4.remove();
+            }
+
+            // Serialize the cloned div to a string
+            const serializedContent4 = new XMLSerializer().serializeToString(clonedDiv4);
+
+            // Save the serialized content to local storage
+            localStorage.setItem('playlistContent4', serializedContent4);
+
+            // Redirect to the 'playlist.html' page
+            window.location.href = 'playlist.html';
+        }
+        function copyDivToPlaylist5(button5) {
+            // Find the parent div with class 'vid_list' containing the content
+            const parentDiv5 = button5.parentElement.parentElement.parentElement;
+
+            // Clone the parent div and remove the button from the cloned content
+            const clonedDiv5= parentDiv5.cloneNode(true);
+            const buttonToRemove5 = clonedDiv5.querySelector('.list5');
+            if (buttonToRemove5) {
+                buttonToRemove5.remove();
+            }
+
+            // Serialize the cloned div to a string
+            const serializedContent5 = new XMLSerializer().serializeToString(clonedDiv5);
+
+            // Save the serialized content to local storage
+            localStorage.setItem('playlistContent5', serializedContent5);
+
+            // Redirect to the 'playlist.html' page
+            window.location.href = 'playlist.html';
+        }
+        //to add videos to the playlist
+    </script>
+</body>
+</html>

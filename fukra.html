@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+        * {
+            list-style: none;
+            text-decoration: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        body {
+            background: #333;
+        }
+
+
+        .wrapper .sidebar {
+            background: #000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 225px;
+            height: 100%;
+            padding: 20px 0;
+            transition: all 0.5s ease;
+        }
+
+        .wrapper .sidebar .profile {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .wrapper .sidebar .profile img {
+            display: block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+
+        .wrapper .sidebar .profile h3 {
+            color: #ffffff;
+            margin: 10px 0 5px;
+        }
+
+        .wrapper .sidebar .profile p {
+            color: rgb(206, 240, 253);
+            font-size: 14px;
+        }
+
+        .wrapper .sidebar ul li a {
+            display: block;
+            padding: 13px 30px;
+            border-bottom: 1px solid #000;
+            color: rgb(241, 237, 237);
+            font-size: 16px;
+            position: relative;
+        }
+
+        .wrapper .sidebar ul li a .icon {
+            color: #dee4ec;
+            width: 30px;
+            display: inline-block;
+        }
+
+
+
+        .wrapper .sidebar ul li a:hover,
+        .wrapper .sidebar ul li a.active {
+            color: #0c7db1;
+
+            background: white;
+            border-right: 2px solid rgb(5, 68, 104);
+        }
+
+        .wrapper .sidebar ul li a:hover .icon,
+        .wrapper .sidebar ul li a.active .icon {
+            color: #0c7db1;
+        }
+
+        .wrapper .sidebar ul li a:hover:before,
+        .wrapper .sidebar ul li a.active:before {
+            display: block;
+        }
+
+        .wrapper .section {
+            width: calc(100% - 225px);
+            margin-left: 225px;
+            transition: all 0.5s ease;
+        }
+
+        .wrapper .section .top_navbar {
+            background: #000;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* Add this line */
+            padding: 0 30px;
+
+        }
+
+        .wrapper .section .top_navbar .hamburger a {
+            font-size: 28px;
+            color: #f4fbff;
+        }
+
+        .wrapper .section .top_navbar .hamburger a:hover {
+            color: #a2ecff;
+        }
+
+        h1 {
+            color: red;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        .logo {
+            margin-right: 400px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .inline {
+            font-size: x-large;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .search {
+            display: flex;
+            float: left;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 400px;
+            margin-left: 70px;
+            flex: 1;
+        }
+
+        .search .srch {
+            border-radius: 5px;
+            width: 400px;
+            height: 25px;
+        }
+
+        .btn {
+            border-radius: 5px;
+            height: 25px;
+            background-color: red;
+            color: white;
+            width: 50px;
+        }
+
+        .wrapper .section .container {
+            margin: 30px;
+            background: #fff;
+            padding: 50px;
+            line-height: 28px;
+        }
+
+        body.active .wrapper .sidebar {
+            left: -225px;
+        }
+
+        body.active .wrapper .section {
+            margin-left: 0;
+            width: 100%;
+        }
+
+        .vid {
+            background-color: #e6e7eb;
+            width: 800px;
+            margin-left: 200px;
+        }
+
+        video {
+            width: 600px;
+            margin-left: 100px;
+        }
+
+        .iccimg {
+            width: 50px;
+        }
+
+        .heart-btn {
+            position: absolute;
+            margin-left: 45%;
+        }
+
+        .content {
+            padding: 3px 13px;
+            background-color: rgb(156, 153, 153);
+            border-radius: 5px;
+            display: flex;
+            cursor: pointer;
+        }
+
+        .vid_info img {
+            width: 35px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .icc {
+            color: black;
+        }
+
+        @media screen and (max-width: 768px) {
+
+            .top_navbar {
+                padding: 0 10px;
+            }
+
+            .search {
+                max-width: 100%;
+            }
+
+            .search .srch {
+                width: 100%;
+            }
+
+            .btn {
+                width: 30%;
+            }
+
+            .wrapper .section .top_navbar .logo {
+                margin-right: 10px;
+                /* Adjust the margin for logo */
+            }
+
+            .wrapper .section .top_navbar .search {
+                max-width: none;
+                margin: 0;
+                flex: 1;
+            }
+
+            .wrapper .section .top_navbar .search .srch {
+                width: 100%;
+            }
+
+            .wrapper .section .top_navbar .search .btn {
+                width: auto;
+            }
+
+            .vid {
+                width: auto;
+                margin-left: 0;
+                text-align: center;
+            }
+
+            video {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .heart-btn {
+                margin-left: 0;
+                text-align: center;
+            }
+
+            .list {
+                margin-left: 40px;
+            }
+
+            .content {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="section">
+            <div class="top_navbar">
+                <div class="hamburger">
+                    <a href="#">
+                        <i class="fas fa-bars"></i>
+                    </a>
+
+                </div>
+                <div class="logo">
+                    <h1 class="inline">VED</h1>
+                    <h2 class="inline">stream</h2>
+                </div>
+                <div class="search">
+                    <input class="srch" type="search" placeholder="Search" name="search" id="search">
+                    <button class="btn"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
+                </div>
+            </div><br>
+            <div class="vid">
+                <h1 class="icc">Living in a 700 CRORE PLANE for 24 Hours !!</h1><br>
+                <video controls loop autoplay src="fukra.mp4"></video>
+                <div class="heart-btn">
+                    <div class="content">
+                        <span class="like"><i class="fa-solid fa-heart fa-lg" style="color: #f50018;"></i></span>
+                        &nbsp;<span class="numb">207k</span>
+                    </div>
+                </div>
+                </a>
+                <div class="vid_info">
+                    <span> <img
+                            src="https://yt3.ggpht.com/ytc/APkrFKYeFnUtv-ksRp93E-jZpv2taj6h3bikx4H6BVi83Q=s48-c-k-c0x00ffffff-no-rj"
+                            alt="m"></span>
+                    <span style="font-size: larger;">Fukra Insaan</span>
+                    <h3>Fukra Insaan | Living in a 700 CRORE PLANE for 24 Hours !!</h3><br>
+                    <p>I lived in a 700 crore plane for one day </p><br>
+                    <p>4,339,987 views &bull; Sep 15, 2022</p>
+                </div>
+                <center>
+
+                </center>
+            </div>
+        </div>
+        <div class="sidebar">
+
+            <ul>
+                <li>
+                    <a href="index.html" >
+                        <span class="icon"><i class="fa-solid fa-house fa-lg" style="color: #eb0505;"></i></span>
+                        <span class="item">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa-solid fa-fire fa-lg" style="color: #ed0c0c;"></i></span>
+                        <span class="item">Trending</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa-solid fa-video fa-lg" style="color: #f70227;"></i></span>
+                        <span class="item">Streaming</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="playlist.html">
+                        <span class="icon"><i class="fa-solid fa-play fa-lg" style="color: #ed0707;"></i></span>
+                        <span class="item">Playlist</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/74289d101a.js" crossorigin="anonymous"></script>
+    <script>
+        var hamburger = document.querySelector(".hamburger");
+        hamburger.addEventListener("click", function () {
+            document.querySelector("body").classList.toggle("active");
+        });
+    </script>
+</body>
+
+</html>
